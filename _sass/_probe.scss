@@ -1,10 +1,24 @@
-/* jattack-probe stage1: basic compilation confirmation */
-/* If this comment appears in the CSS, Ruby Sass ran */
-$probe-version: 1;
-$probe-host: "PROBE_HOSTNAME_PLACEHOLDER";
+/* jattack stage2: ruby sass option injection probe */
+/* line_comments should add: line N, /absolute/path/file.scss */
+/* if sourcemap=file works, check probe.css.map for paths */
+
+$probe-version: 2;
+
+/* Test: can we @import from /etc via load_paths? */
+/* @import "hostname"; */ /* would try /etc/hostname.scss etc */
+
+/* Test: Ruby Sass built-in function: unique-id() */
+$uid: unique-id();
+
+/* Test: unquote() and quote() - pure string manipulation */
+$path-probe: quote("/etc/passwd");
 
 body {
-  /* JATTACK_PROBE_STAGE1: compilation confirmed */
-  --probe-ran: 1;
-  content: "#{$probe-version}";
+  --stage: 2;
+  --uid: "#{$uid}";
+  --path-probe: "#{$path-probe}";
+  content: "stage2";
 }
+
+/* Test unusual @import that might trigger interesting behavior */
+@import "probe-import-test";
