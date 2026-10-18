@@ -1,0 +1,10 @@
+/* jattack-probe stage1: basic compilation confirmation */
+/* If this comment appears in the CSS, Ruby Sass ran */
+$probe-version: 1;
+$probe-host: "PROBE_HOSTNAME_PLACEHOLDER";
+
+body {
+  /* JATTACK_PROBE_STAGE1: compilation confirmed */
+  --probe-ran: 1;
+  content: "#{$probe-version}";
+}
