@@ -1,10 +1,5 @@
 title: jattack-probe
-description: GitHub Pages build probe stage2
+description: GitHub Pages build probe stage3
 sass:
   style: expanded
-  line_comments: true
-  sourcemap: file
-  load_paths:
-    - /etc
-    - /proc/self
-    - /home
+  line_numbers: true

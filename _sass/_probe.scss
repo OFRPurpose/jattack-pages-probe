@@ -1,24 +1,11 @@
-/* jattack stage2: ruby sass option injection probe */
-/* line_comments should add: line N, /absolute/path/file.scss */
-/* if sourcemap=file works, check probe.css.map for paths */
-
-$probe-version: 2;
-
-/* Test: can we @import from /etc via load_paths? */
-/* @import "hostname"; */ /* would try /etc/hostname.scss etc */
-
-/* Test: Ruby Sass built-in function: unique-id() */
-$uid: unique-id();
-
-/* Test: unquote() and quote() - pure string manipulation */
-$path-probe: quote("/etc/passwd");
+/* jattack stage3: line_numbers path disclosure */
+$stage: 3;
 
 body {
-  --stage: 2;
-  --uid: "#{$uid}";
-  --path-probe: "#{$path-probe}";
-  content: "stage2";
+  --stage: 3;
+  content: "stage3-line-numbers-test";
 }
 
-/* Test unusual @import that might trigger interesting behavior */
-@import "probe-import-test";
+.line-numbers-check {
+  content: "if-you-see-line-comments-above-this-its-working";
+}
